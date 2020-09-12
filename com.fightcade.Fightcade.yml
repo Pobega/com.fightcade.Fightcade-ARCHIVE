@@ -1,0 +1,26 @@
+app-id: com.fightcade.Fightcade
+base: org.electronjs.Electron2.BaseApp
+base-version: 19.08
+runtime: org.freedesktop.Platform
+runtime-version: '20.08'
+sdk: org.freedesktop.Sdk
+command: fightcade
+tags:
+  - proprietary
+
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --share=network
+  - --socket=pulseaudio
+  - --env=LD_LIBRARY_PATH=/app/lib
+
+modules:
+  - name: fightcade
+    buildsystem: simple
+    build-commands:
+      - install: -Dm 755 fc2-electron /app/bin/fightcade
+    sources:
+      - type: archive
+        url: https://web.fightcade.com/download/Fightcade-linux-latest.tar.gz
+        sha256: 6d89b806fc270c7e5dc6cf9035fb549ce746f676b8c3876eba55b0c62c9ee9cc
