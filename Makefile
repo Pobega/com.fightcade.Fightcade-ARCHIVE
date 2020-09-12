@@ -15,3 +15,6 @@ install:
 		--install \
 		--force-clean \
 		com.fightcade.Fightcade.yml
+
+clean:
+	rm -rf build/
