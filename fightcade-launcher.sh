@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/app/bin/zypak-wrapper /app/bin/fc2-electron
+/app/bin/zypak-wrapper /app/fightcade/fc2-electron/fc2-electron
