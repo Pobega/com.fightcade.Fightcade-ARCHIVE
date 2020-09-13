@@ -23,6 +23,12 @@ modules:
         url: https://web.fightcade.com/download/Fightcade-linux-latest.tar.gz
         sha256: 6d89b806fc270c7e5dc6cf9035fb549ce746f676b8c3876eba55b0c62c9ee9cc
     build-commands:
+        # Fightcade launcher
+      - install -Dm755 Fightcade.desktop /app/share/applications/com.fightcade.Fightcade.desktop
+      - desktop-file-edit --set-key=Comment --set-value="Play arcade games online" /app/share/applications/com.fightcade.Fightcade.desktop
+      - desktop-file-edit --set-key=Exec --set-value=/app/bin/fightcade /app/share/applications/com.fightcade.Fightcade.desktop
+      - desktop-file-edit --set-key=Icon --set-value=/app/fightcade/fc2-electron/resources/app/icon.png /app/share/applications/com.fightcade.Fightcade.desktop
+        # Place entire Fightcade zip contents in /app/fightcade
       - mkdir -p /app/fightcade
       - mv * /app/fightcade/
 
@@ -61,3 +67,5 @@ modules:
     post-install:
       # Symlink to 'wine' for Fightcade
       - ln -s /app/bin/wine64 /app/bin/wine
+      # Remove wine desktop file
+      - rm /app/share/applications/wine.desktop
