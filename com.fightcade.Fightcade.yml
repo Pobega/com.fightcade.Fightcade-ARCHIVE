@@ -1,8 +1,8 @@
 app-id: com.fightcade.Fightcade
 base: org.electronjs.Electron2.BaseApp
-base-version: 19.08
+base-version: "19.08"
 runtime: org.freedesktop.Platform
-runtime-version: 20.08
+runtime-version: "20.08"
 sdk: org.freedesktop.Sdk
 command: fightcade
 tags:
@@ -25,6 +25,7 @@ modules:
     build-commands:
       - mkdir -p /app/fightcade
       - mv * /app/fightcade/
+
   - name: fightcade-launcher
     buildsystem: simple
     sources:
@@ -32,3 +33,31 @@ modules:
         path: fightcade-launcher.sh
     build-commands:
       - install -Dm755 fightcade-launcher.sh /app/bin/fightcade
+
+  - name: wine
+    build-options:
+      prefix: /app
+      prepend-path: /app/bin
+      libdir: /app/lib
+      strip: true
+    config-opts:
+      - --enable-win64
+      - --disable-win16
+      - --disable-tests
+      - --with-x
+      - --with-pulse
+      - --with-dbus
+      - --without-hal
+      - --without-oss
+    make-install-args:
+      - LDCONFIG=/bin/true
+      - STRIP=/bin/true
+      - UPDATE_DESKTOP_DATABASE=/bin/true
+    sources:
+      - type: git
+        url: "https://github.com/wine-mirror/wine.git"
+        commit: 6ed1d04b1325d4c2480907b76b8b1d5529caebab
+        tag: wine-5.0.1
+    post-install:
+      # Symlink to 'wine' for Fightcade
+      - ln -s /app/bin/wine64 /app/bin/wine
