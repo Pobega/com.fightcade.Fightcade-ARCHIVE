@@ -1,4 +1,14 @@
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - '**.yml'
+      - '**.sh'
+  pull_request:
+    branches:
+      - master
+  release:
+    types:
+      - created
 name: Flatpak
 jobs:
   flatpak-builder:
