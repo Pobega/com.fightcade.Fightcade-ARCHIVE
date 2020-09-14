@@ -1,4 +1,5 @@
 /build-dir/
+/build/
 /Fightcade/
 /.flatpak-builder/
 /fightcade.flatpak
