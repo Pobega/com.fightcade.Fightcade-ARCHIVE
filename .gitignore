@@ -1,3 +1,5 @@
-/build/
+/build-dir/
 /Fightcade/
 /.flatpak-builder/
+/fightcade.flatpak
+/repo/
