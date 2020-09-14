@@ -47,12 +47,6 @@ modules:
       # Place entire Fightcade zip contents in /app/fightcade
       - mkdir -p /app/fightcade
       - mv * /app/fightcade
-    post-install:
-      - echo "~+~+~+~+~+~+~+~"
-      - pwd
-      - ls ..
-      - echo "~+~+~+~+~+~+~+~"
-      - ls ../..
 
   - name: fightcade-launcher
     buildsystem: simple
@@ -61,63 +55,24 @@ modules:
         path: fightcade-launcher.sh
     build-commands:
       - install -Dm755 fightcade-launcher.sh /app/bin/fightcade
-    post-install:
-      - echo "~+~+~+~+~+~+~+~"
-      - pwd
-      - ls ..
 
-  - name: wine-wow64
-    only-arches:
-      - x86_64
-    modules:
-      - name: wine64-base
-        builddir: true
-        build-options:
-          arch:
-            x86_64:
-              config-opts:
-                - --enable-win64
-              libdir: /app/lib
-        config-opts: &wine_common_opts
-          - --silent
-          - --disable-win16
-          - --disable-tests
-          - --with-x
-          - --with-pulse
-          - --with-dbus
-          - --without-hal
-          - --without-oss
-        make-install-args: &wine_common_make_install_args
-          - LDCONFIG=/bin/true
-          - STRIP=/bin/true
-          - UPDATE_DESKTOP_DATABASE=/bin/true
-        sources: &wine_sources
-          - type: git
-            url: "https://github.com/wine-mirror/wine.git"
-            commit: 6ed1d04b1325d4c2480907b76b8b1d5529caebab
-            tag: wine-5.0.1
-        post-install:
-          - echo "~+~+~+~+~+~+~+~"
-          - pwd
-          - ls ..
-          - echo "~+~+~+~+~+~+~+~"
-          - ls ../..
-          - echo "~+~+~+~+~+~+~+~"
-    build-options:
-      arch:
-        x86_64:
-          config-opts:
-            - --with-wine64=/run/build/wine64-base/_flatpak_build
-            # Might be this?
-            # https://github.com/winepak/winepak-sdk/blob/2ad32c34d8fc376ddaa0f7811a76a0e213921c02/org.winepak.Sdk-staging.json#L128
-            #- --with-wine64=../../wine64-base/_flatpak_build
-          prepend-pkg-config-path: /app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig
-          ldflags: -L/app/lib32
-          append-path: /usr/lib/sdk/toolchain-i386/bin
-          env:
-            CC: i686-unknown-linux-gnu-gcc
-            CXX: i686-unknown-linux-gnu-g++
-          libdir: /app/lib32
-    config-opts: *wine_common_opts
-    make-install-args: *wine_common_make_install_args
-    sources: *wine_sources
+  - name: setup-32bit
+    buildsystem: simple
+      #    sources:
+      #- type: file,
+      #  path: ld.so.conf
+    build-commands:
+      - ln -s /app/lib32/lib/ld-linux.so.2 /app/lib/ld-linux.so.2
+        #- install -Dm644 ld.so.conf /app/etc/ld.so.conf
+
+  - name: wine
+    buildsystem: simple
+    build-commands:
+      - chmod +x winebuild.sh && ./winebuild.sh
+    no-make-install: true
+    sources:
+      - type: archive
+        url: https://dl.winehq.org/wine/source/5.0/wine-5.0.1.tar.xz
+        sha256: 12b13405c4bc0d6e1a3991c0b0542562669c9b7d8307f11ff75aa17378345894
+      - type: file
+        path: winebuild.sh
