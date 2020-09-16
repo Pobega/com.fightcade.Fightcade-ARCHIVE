@@ -21,6 +21,9 @@ If you'd like to install the Flatpak locally after building use `make install` i
 Unpacks the tar.gz bundles from Fightcade.com to `/app/fightcade/` and builds a very plain version of Wine to run the emulators with.
 Uses Zypak to wrap the Fightcade Electron binary so that it can run in the Bwrap sandbox.
 
+### ROMs
+ROM folders can be found in `$HOME/.local/share/flatpak/app/com.fightcade.Fightcade/x86_64/master/<hash>/files/fightcade`
+
 ## Thanks
 * Electron support is thanks to [Zypak](https://github.com/refi64/zypak)
 * Lutris devs for [net.lutris.Lutris.Runner.Wine](https://github.com/flathub/net.lutris.Lutris.Runner.Wine) which helped me figure out how to get Wine building.
