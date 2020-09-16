@@ -51,8 +51,8 @@ finish-args:
   - --socket=pulseaudio
   - --talk-name=org.freedesktop.Notifications
   - --device=all
+  # Support 32-bit runtime
   - --env=LD_LIBRARY_PATH=/app/lib:/app/lib32
-  # Support 32-bit at runtime
   - --allow=multiarch
 
 modules:
@@ -73,17 +73,20 @@ modules:
       - install -Dm755 Fightcade.desktop /app/share/applications/com.fightcade.Fightcade.desktop
       - desktop-file-edit --set-key=Comment --set-value="Play arcade games online" /app/share/applications/com.fightcade.Fightcade.desktop
       - desktop-file-edit --set-key=Exec --set-value=/app/bin/fightcade /app/share/applications/com.fightcade.Fightcade.desktop
-      - desktop-file-edit --set-key=Icon --set-value=/app/fightcade/fc2-electron/resources/app/icon.png /app/share/applications/com.fightcade.Fightcade.desktop
+      - desktop-file-edit --set-key=Icon --set-value=com.fightcade.Fightcade /app/share/applications/com.fightcade.Fightcade.desktop
       # Place entire Fightcade zip contents in /app/fightcade
       - mkdir -p /app/fightcade
       - mv * /app/fightcade
 
-  - name: fightcade-launcher
+  - name: fightcade-assets
     buildsystem: simple
     sources:
       - type: file
-        path: fightcade-launcher.sh
+        path: assets/icons/com.fightcade.Fightcade.png
+      - type: file
+        path: assets/fightcade-launcher.sh
     build-commands:
+      - install -Dm755 com.fightcade.Fightcade.png /app/share/icons/hicolor/256x256/apps/com.fightcade.Fightcade.png
       - install -Dm755 fightcade-launcher.sh /app/bin/fightcade
 
   - name: wine32
