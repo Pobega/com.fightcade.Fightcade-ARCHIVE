@@ -49,6 +49,8 @@ finish-args:
   - --socket=x11
   - --share=network
   - --socket=pulseaudio
+  - --talk-name=org.freedesktop.Notifications
+  - --device=all
   - --env=LD_LIBRARY_PATH=/app/lib:/app/lib32
   # Support 32-bit at runtime
   - --allow=multiarch
