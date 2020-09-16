@@ -8,6 +8,7 @@ download:
 
 build:
 	flatpak-builder  \
+		--keep-build-dirs \
 		--repo=repo \
 		--force-clean \
 		build-dir/ \
@@ -15,6 +16,7 @@ build:
 
 install:
 	flatpak-builder  \
+		--keep-build-dirs \
 		--repo=repo \
 		--user \
 		--install \
