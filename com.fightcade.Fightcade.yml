@@ -53,6 +53,7 @@ finish-args:
   - --device=all
   # Support 32-bit runtime
   - --env=LD_LIBRARY_PATH=/app/lib:/app/lib32
+  - --env=WINEDLLOVERRIDES=mscoree,mshtml=
   - --allow=multiarch
 
 modules:
