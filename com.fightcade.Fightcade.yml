@@ -87,6 +87,8 @@ modules:
         dest-filename: apply_extra
         commands:
           - tar -xf fightcade.tar.gz
+          # Temporary workaround to get FBNeo to have a default config.
+          - cp Fightcade/emulator/fbneo/config/fcadefbneo.default.ini Fightcade/emulator/fbneo/config/fcadefbneo.ini
           - rm -f fightcade.tar.gz
       - type: file
         path: com.fightcade.Fightcade.desktop
