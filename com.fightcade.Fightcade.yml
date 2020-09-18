@@ -99,9 +99,9 @@ modules:
       - type: file
         path: icons/com.fightcade.Fightcade-256.png
       - type: file
-        path: fightcade-launcher.sh
+        path: scripts/fightcade-launcher.sh
       - type: file
-        path: fcade-quark.sh
+        path: scripts/fcade-quark.sh
       - type: file
         path: com.fightcade.Fightcade.appdata.xml
 
