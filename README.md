@@ -17,6 +17,15 @@ make build
 
 If you'd like to install the Flatpak locally after building use `make install` instead.
 
+## Install without building
+
+If you'd like to test out the Flatpak, a (semi) live version can be accessed by adding my remote
+
+```
+flatpak remote-add --user --no-gpg-verify pobega http://pobega.github.io/repo/
+flatpak install --user pobega com.fightcade.Fightcade
+```
+
 ## Details
 Unpacks the tar.gz bundles from Fightcade.com to `/app/fightcade/` and builds a very plain version of Wine to run the emulators with.
 Uses Zypak to wrap the Fightcade Electron binary so that it can run in the Bwrap sandbox.
