@@ -54,6 +54,7 @@ finish-args:
   - --device=all
   # Persist Wineprefix as ~/.var/app/{fightcade}/.wine
   - --persist=.wine
+  - --persist=logs
   # Skip Gecko and Mono popups when creating Wine prefix
   - --env=WINEDLLOVERRIDES=mscoree,mshtml=
   # Support 32-bit runtime
@@ -70,7 +71,9 @@ modules:
     buildsystem: simple
     build-commands:
       - install -Dm755 com.fightcade.Fightcade.desktop /app/share/applications/com.fightcade.Fightcade.desktop
+      - install -Dm755 fcade-quark.desktop /app/share/applications/com.fightcade.Fightcade.fcade-quark.desktop
       - install -Dm755 fightcade-launcher.sh /app/bin/fightcade
+      - install -Dm755 fcade-quark.sh /app/bin/fcade-quark
       - install -Dm755 com.fightcade.Fightcade-64.png /app/share/icons/hicolor/64x64/apps/com.fightcade.Fightcade.png
       - install -Dm755 com.fightcade.Fightcade-128.png /app/share/icons/hicolor/128x128/apps/com.fightcade.Fightcade.png
       - install -Dm755 com.fightcade.Fightcade-256.png /app/share/icons/hicolor/256x256/apps/com.fightcade.Fightcade.png
@@ -89,9 +92,22 @@ modules:
           - tar -xf fightcade.tar.gz
           # Temporary workaround to get FBNeo to have a default config.
           - cp Fightcade/emulator/fbneo/config/fcadefbneo.default.ini Fightcade/emulator/fbneo/config/fcadefbneo.ini
+          # Log file Fightcade expects to be able to write to
+          - touch ~/logs/fcade-errors.log
+          - ln -s ~/logs/fcade-errors.log Fightcade/emulator/fcade-errors.log
+          - touch ~/logs/fcade.log
+          - ln -s ~/logs/fcade.log Fightcade/emulator/fcade.log
+          - touch ~/logs/fcade.log.1
+          - ln -s ~/logs/fcade.log.1 Fightcade/emulator/fcade.log.1
+          - touch ~/logs/fcade.log.2
+          - ln -s ~/logs/fcade.log.2 Fightcade/emulator/fcade.log.3
+          - touch ~/logs/fcade.log.3
+          - ln -s ~/logs/fcade.log.3 Fightcade/emulator/fcade.log.2
           - rm -f fightcade.tar.gz
       - type: file
         path: com.fightcade.Fightcade.desktop
+      - type: file
+        path: fcade-quark.desktop
       - type: file
         path: icons/com.fightcade.Fightcade-64.png
       - type: file
@@ -100,6 +116,8 @@ modules:
         path: icons/com.fightcade.Fightcade-256.png
       - type: file
         path: fightcade-launcher.sh
+      - type: file
+        path: fcade-quark.sh
       - type: file
         path: com.fightcade.Fightcade.appdata.xml
 
