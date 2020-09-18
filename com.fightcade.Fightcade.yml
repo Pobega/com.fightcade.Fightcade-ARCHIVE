@@ -86,24 +86,8 @@ modules:
         sha256: 6d89b806fc270c7e5dc6cf9035fb549ce746f676b8c3876eba55b0c62c9ee9cc
         # Use `du -b` to get the size
         size: 137201866
-      - type: script
-        dest-filename: apply_extra
-        commands:
-          - tar -xf fightcade.tar.gz
-          # Temporary workaround to get FBNeo to have a default config.
-          - cp Fightcade/emulator/fbneo/config/fcadefbneo.default.ini Fightcade/emulator/fbneo/config/fcadefbneo.ini
-          # Log file Fightcade expects to be able to write to
-          - touch ~/logs/fcade-errors.log
-          - ln -s ~/logs/fcade-errors.log Fightcade/emulator/fcade-errors.log
-          - touch ~/logs/fcade.log
-          - ln -s ~/logs/fcade.log Fightcade/emulator/fcade.log
-          - touch ~/logs/fcade.log.1
-          - ln -s ~/logs/fcade.log.1 Fightcade/emulator/fcade.log.1
-          - touch ~/logs/fcade.log.2
-          - ln -s ~/logs/fcade.log.2 Fightcade/emulator/fcade.log.3
-          - touch ~/logs/fcade.log.3
-          - ln -s ~/logs/fcade.log.3 Fightcade/emulator/fcade.log.2
-          - rm -f fightcade.tar.gz
+      - type: file
+        path: scripts/apply_extra
       - type: file
         path: com.fightcade.Fightcade.desktop
       - type: file

@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# Untar our Fightcade download
+tar -xf fightcade.tar.gz
+rm -f fightcade.tar.gz
+
+# Temporary workaround to get FBNeo to have a default config.
+cp Fightcade/emulator/fbneo/config/fcadefbneo.default.ini Fightcade/emulator/fbneo/config/fcadefbneo.ini
+
+# Log file Fightcade expects to be able to write to
+touch ~/logs/fcade-errors.log
+ln -s ~/logs/fcade-errors.log Fightcade/emulator/fcade-errors.log
+touch ~/logs/fcade.log
+ln -s ~/logs/fcade.log Fightcade/emulator/fcade.log
+touch ~/logs/fcade.log.1
+ln -s ~/logs/fcade.log.1 Fightcade/emulator/fcade.log.1
+touch ~/logs/fcade.log.2
+ln -s ~/logs/fcade.log.2 Fightcade/emulator/fcade.log.3
+touch ~/logs/fcade.log.3
+ln -s ~/logs/fcade.log.3 Fightcade/emulator/fcade.log.2
+
+# Create a wine wrapper for Fightcade.
+# Fightcade is hardcoded to expect /usr/{local/,}bin/wine, but is
+# willing to accept a wine wrapper script as `Resources/wine.sh`.
+# We'll use that to proxy into /app/bin/wine
+mkdir -p /app/extra/Resources
+
+echo '#!/bin/sh
+
+/app/bin/wine "$@"' > /app/extra/Resources/wine.sh
+
+chmod +x /app/extra/Resources/wine.sh
