@@ -4,9 +4,12 @@ Files for building a Flatpak for [Fightcade](https://www.fightcade.com/) to ulti
 
 ## Usage
 
-Install the dependencies:
+Install the runtime dependencies:
 ```
-flatpak install org.electronjs.Electron2.BaseApp//19.08 org.freedesktop.Platform//20.08 org.freedesktop.Sdk//20.08
+flatpak install org.electronjs.Electron2.BaseApp//19.08 \
+org.freedesktop.Platform//20.08 \
+org.freedesktop.Platform.Compat.i386//20.08 \
+org.freedesktop.Platform.GL32
 ```
 <sup>(Please reference `com.fightcade.Fightcade.yml` if these dependencies change and open a PR against this README)</sup>
 
