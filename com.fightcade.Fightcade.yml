@@ -52,9 +52,10 @@ finish-args:
   - --allow=multiarch
   - --talk-name=org.freedesktop.Notifications
   - --device=all
+  - --persist=ROMs
+  - --persist=config
   # Persist Wineprefix as ~/.var/app/{fightcade}/.wine
   - --persist=.wine
-  - --persist=logs
   # Skip Gecko and Mono popups when creating Wine prefix
   - --env=WINEDLLOVERRIDES=mscoree,mshtml=
   # Support 32-bit runtime

@@ -1,23 +1,30 @@
 #!/bin/sh
 
+DATADIR=/var/data
+
 # Untar our Fightcade download
 tar -xf fightcade.tar.gz
 rm -f fightcade.tar.gz
 
-# Temporary workaround to get FBNeo to have a default config.
-cp Fightcade/emulator/fbneo/config/fcadefbneo.default.ini Fightcade/emulator/fbneo/config/fcadefbneo.ini
+ln -s ${DATADIR}/fc2json Fightcade/emulator/fc2json
+
+# Symlink the ROMs folder to persistent directories
+rmdir Fightcade/emulator/fbneo/ROMs
+ln -s ~/ROMs/fbneo Fightcade/emulator/fbneo/ROMs
+rmdir Fightcade/emulator/ggpofba/ROMs
+ln -s ~/ROMs/ggpofba Fightcade/emulator/ggpofba/ROMs
+rmdir Fightcade/emulator/snes9x/ROMs
+ln -s ~/ROMs/snes9x Fightcade/emulator/snes9x/ROMs
 
 # Log file Fightcade expects to be able to write to
-touch ~/logs/fcade-errors.log
-ln -s ~/logs/fcade-errors.log Fightcade/emulator/fcade-errors.log
-touch ~/logs/fcade.log
-ln -s ~/logs/fcade.log Fightcade/emulator/fcade.log
-touch ~/logs/fcade.log.1
-ln -s ~/logs/fcade.log.1 Fightcade/emulator/fcade.log.1
-touch ~/logs/fcade.log.2
-ln -s ~/logs/fcade.log.2 Fightcade/emulator/fcade.log.3
-touch ~/logs/fcade.log.3
-ln -s ~/logs/fcade.log.3 Fightcade/emulator/fcade.log.2
+ln -s ${DATADIR}/logs/fcade-errors.log Fightcade/emulator/fcade-errors.log
+ln -s ${DATADIR}/logs/fcade.log Fightcade/emulator/fcade.log
+ln -s ${DATADIR}/logs/fcade.log.1 Fightcade/emulator/fcade.log.1
+ln -s ${DATADIR}/logs/fcade.log.2 Fightcade/emulator/fcade.log.3
+ln -s ${DATADIR}/logs/fcade.log.3 Fightcade/emulator/fcade.log.2
+
+# Symlink FBNeo default config to writable file
+ln -s ~/config/fcadefbneo.ini Fightcade/emulator/fbneo/config/fcadefbneo.ini
 
 # Create a wine wrapper for Fightcade.
 # Fightcade is hardcoded to expect /usr/{local/,}bin/wine, but is
