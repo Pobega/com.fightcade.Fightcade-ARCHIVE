@@ -3,7 +3,7 @@
     <id>com.fightcade.FightCade</id>
     <launchable type="desktop-id">com.fightcade.Fightcade.desktop</launchable>
     <metadata_license>CC0-1.0</metadata_license>
-    <project_license>Proprietary</project_license>
+    <project_license>LicenseRef-proprietary</project_license>
     <name>Fightcade</name>
     <url type="homepage">https://www.fightcade.com/</url>
     <summary>Play arcade games online.</summary>
@@ -14,15 +14,15 @@
     </description>
     <screenshots>
         <screenshot type="default">
-            <image>https://i.imgur.com/iLqLdJ8.png</image>
+            <image>https://raw.githubusercontent.com/Pobega/com.fightcade.Fightcade/master/screenshots/landing-page.png</image>
             <caption>Fightcade landing page</caption>
         </screenshot>
         <screenshot>
-            <image>https://i.imgur.com/7eVwaFz.png</image>
+            <image>https://raw.githubusercontent.com/Pobega/com.fightcade.Fightcade/master/screenshots/game-lobby.png</image>
             <caption>Game lobby</caption>
         </screenshot>
         <screenshot>
-            <image>https://i.imgur.com/CYDzZWf.png</image>
+            <image>https://raw.githubusercontent.com/Pobega/com.fightcade.Fightcade/master/screenshots/spectating.png</image>
             <caption>Spectating a game</caption>
         </screenshot>
     </screenshots>
