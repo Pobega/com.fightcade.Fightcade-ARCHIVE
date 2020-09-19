@@ -132,6 +132,29 @@ modules:
       - --without-v4l
       - --with-dbus
       - --without-oss
+    cleanup:
+      - "*.a"
+      - "*.la"
+      - /include
+      - /lib/pkgconfig
+      - /lib32/pkgconfig
+      - /lib/cmake
+      - /lib32/cmake
+      - /share/man
+
+      - /bin/function_grep.pl
+      - /bin/widl
+      - /bin/winebuild
+      - /bin/winecpp
+      - /bin/winedump
+      - /bin/wineg++
+      - /bin/winegcc
+      - /bin/winemaker
+      - /bin/wmc
+      - /bin/wrc
+
+      - /lib/wine/*.def
+      - /lib32/wine/*.def
     make-install-args:
       - LDCONFIG=/bin/true
       - STRIP=/bin/true
