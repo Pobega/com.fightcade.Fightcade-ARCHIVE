@@ -16,14 +16,23 @@ ln -s ~/ROMs/ggpofba Fightcade/emulator/ggpofba/ROMs
 rmdir Fightcade/emulator/snes9x/ROMs
 ln -s ~/ROMs/snes9x Fightcade/emulator/snes9x/ROMs
 
-# Log file Fightcade expects to be able to write to
+# Update Fightcade's builtin ROM symlinks
+# This is symlinked to the full path so that the symlinks work when clicking
+# 'ROMs -> Open ROMs Folder' in the Fightcade frontend (which opens in a
+# non-sandboxed file manager)
+rm -rf Fightcade/ROMs/*
+ln -s ~/.var/app/com.fightcade.Fightcade/ROMs/fbneo Fightcade/ROMs/fbneo
+ln -s ~/.var/app/com.fightcade.Fightcade/ROMs/ggpofba Fightcade/ROMs/ggpofba
+ln -s ~/.var/app/com.fightcade.Fightcade/ROMs/snes9x Fightcade/ROMs/snes9x
+
+# Log files Fightcade expects to be able to write to
 ln -s ${DATADIR}/logs/fcade-errors.log Fightcade/emulator/fcade-errors.log
 ln -s ${DATADIR}/logs/fcade.log Fightcade/emulator/fcade.log
 ln -s ${DATADIR}/logs/fcade.log.1 Fightcade/emulator/fcade.log.1
 ln -s ${DATADIR}/logs/fcade.log.2 Fightcade/emulator/fcade.log.3
 ln -s ${DATADIR}/logs/fcade.log.3 Fightcade/emulator/fcade.log.2
 
-# Symlink FBNeo default config to writable file
+# Symlink FBNeo config to writable file
 ln -s ~/config/fcadefbneo.ini Fightcade/emulator/fbneo/config/fcadefbneo.ini
 
 # Create a wine wrapper for Fightcade.
