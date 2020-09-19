@@ -36,15 +36,6 @@ sdk-extensions:
   - org.freedesktop.Sdk.Compat.i386
   - org.freedesktop.Sdk.Extension.toolchain-i386
 
-build-options:
-  cflags:
-    - "-O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2"
-  cxxflags:
-    - "-O2 -g -fstack-protector-strong -D_FORTIFY_SOURCE=2"
-  prefix: /app
-  prepend-path: /app/bin
-  strip: true
-
 finish-args:
   - --share=ipc
   - --socket=x11
@@ -112,6 +103,8 @@ modules:
     only-arches:
       - x86_64
     build-options:
+      prefix: /app
+      prepend-path: /app/bin
       prepend-pkg-config-path: /app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig
       ldflags: -L/app/lib32
       append-path: /usr/lib/sdk/toolchain-i386/bin
@@ -119,6 +112,7 @@ modules:
         CC: i686-unknown-linux-gnu-gcc
         CXX: i686-unknown-linux-gnu-g++
       libdir: /app/lib32
+      strip: true
     config-opts:
       - --disable-win16
       - --disable-tests
