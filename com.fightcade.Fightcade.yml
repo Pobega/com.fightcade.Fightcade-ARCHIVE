@@ -1,5 +1,5 @@
 app-id: com.fightcade.Fightcade
-branch: beta
+#branch: beta
 base: org.electronjs.Electron2.BaseApp
 base-version: "19.08"
 runtime: org.freedesktop.Platform
@@ -24,7 +24,6 @@ add-extensions:
     directory: lib/i386-linux-gnu/GL
     version: '20.08'
     subdirectories: true
-    no-autodownload: true
     autodelete: false
     add-ld-path: lib
     merge-dirs: vulkan/icd.d;glvnd/egl_vendor.d
