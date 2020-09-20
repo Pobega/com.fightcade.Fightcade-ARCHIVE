@@ -25,7 +25,7 @@ If you'd like to install the Flatpak locally after building use `make install` i
 If you'd like to test out the Flatpak, a (semi) live version can be accessed by adding my remote
 
 ```
-flatpak remote-add --user --no-gpg-verify pobega http://pobega.github.io/repo/
+flatpak remote-add --user --no-gpg-verify pobega.github.io http://pobega.github.io/repo/
 flatpak install --user pobega com.fightcade.Fightcade
 ```
 
