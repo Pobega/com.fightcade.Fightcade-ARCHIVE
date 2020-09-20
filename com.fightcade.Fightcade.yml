@@ -103,8 +103,6 @@ modules:
 
   - name: wine32
     builddir: true
-    only-arches:
-      - x86_64
     build-options:
       prefix: /app
       prepend-path: /app/bin
