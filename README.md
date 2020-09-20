@@ -29,13 +29,10 @@ flatpak remote-add --user --no-gpg-verify pobega.github.io http://pobega.github.
 flatpak install --user pobega com.fightcade.Fightcade
 ```
 
-Make sure to install the Runtime dependencies as they don't seem to be pulled down automatically
+Due to an [outstanding bug in Flatpak](https://github.com/flatpak/flatpak/issues/3094) you need to manually install the 32-bit compatibility runtimes for Wine
 
 ```
-flatpak install org.electronjs.Electron2.BaseApp//19.08 \
-org.freedesktop.Platform//20.08 \
-org.freedesktop.Platform.Compat.i386//20.08 \
-org.freedesktop.Platform.GL32//20.08
+flatpak install org.freedesktop.Platform.Compat.i386//20.08 org.freedesktop.Platform.GL32//20.08
 ```
 
 ## Details
