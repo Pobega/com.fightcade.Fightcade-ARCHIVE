@@ -74,12 +74,14 @@ modules:
     sources:
       - type: extra-data
         filename: fightcade.tar.gz
-        url: https://web.fightcade.com/download/Fightcade-linux-latest.tar.gz
+        url: https://web.fightcade.com/download/Fightcade-linux-v2.0.82.tar.gz
         sha256: 6d89b806fc270c7e5dc6cf9035fb549ce746f676b8c3876eba55b0c62c9ee9cc
         size: 137201866
         x-checker-data:
-          type: rotating-url
-          url: https://web.fightcade.com/download/Fightcade-linux-latest.tar.gz
+          type: html
+          url: https://web.fightcade.com/download/update.json
+          version-pattern: Fightcade-linux-v([\d.]+).tar.gz
+          url-template: https://web.fightcade.com/download/Fightcade-linux-v${version}.tar.gz
       - type: file
         path: scripts/apply_extra
       - type: file
