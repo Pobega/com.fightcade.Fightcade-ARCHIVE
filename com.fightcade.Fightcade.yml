@@ -76,8 +76,10 @@ modules:
         filename: fightcade.tar.gz
         url: https://web.fightcade.com/download/Fightcade-linux-latest.tar.gz
         sha256: 6d89b806fc270c7e5dc6cf9035fb549ce746f676b8c3876eba55b0c62c9ee9cc
-        # Use `du -b` to get the size
         size: 137201866
+        x-checker-data:
+          type: rotating-url
+          url: https://web.fightcade.com/download/Fightcade-linux-latest.tar.gz
       - type: file
         path: scripts/apply_extra
       - type: file
