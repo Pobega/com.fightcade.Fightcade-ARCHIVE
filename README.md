@@ -26,7 +26,7 @@ If you'd like to test out the Flatpak, a (semi) live version can be accessed by 
 
 ```
 flatpak remote-add --user --no-gpg-verify pobega.github.io http://pobega.github.io/repo/
-flatpak install --user pobega com.fightcade.Fightcade
+flatpak install --user pobega.github.io com.fightcade.Fightcade
 ```
 
 Due to an [outstanding bug in Flatpak](https://github.com/flatpak/flatpak/issues/3094) you need to manually install the 32-bit compatibility runtimes for Wine
