@@ -1,3 +1,8 @@
+# This repository is outdated. Development has moved to Flathub
+## https://github.com/flathub/com.fightcade.Fightcade
+
+---
+
 # com.fightcade.Fightcade
 
 Files for building a Flatpak for [Fightcade](https://www.fightcade.com/) to ultimately be released on Flathub.
